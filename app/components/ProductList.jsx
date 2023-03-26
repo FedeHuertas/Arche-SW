@@ -1,12 +1,15 @@
 import { FlatList } from "react-native";
-import products from "../data/products";
 import ProductItem from "./ProductCard";
 
+import useProducts from "../hooks/useProducts";
+
 const ProductsList = () => {
-    const data = products.products
+
+    const { products } = useProducts();
+
     return (
         <FlatList
-            data={data}
+            data={products}
             renderItem={({item: p}) => (
                 <ProductItem
                     id={p.id}

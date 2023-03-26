@@ -53,7 +53,6 @@ export function AuthProvider({ children }) {
       email,
       password
     );
-    console.log(response);
   };
   /**
    * "login" is a function that takes two parameters, "email" and "password", and returns a promise that

@@ -1,8 +1,27 @@
-import { View, Text } from "react-native";
+import { FlatList, Text } from "react-native";
+import ProductItem from "../components/ProductCard";
 
 const CartScreen = () => {
+
+    const cart = []
+
     return (
-        <Text>Cart</Text>
+        cart.length ?
+        <FlatList
+            data={cart}
+            renderItem={({item: p}) => (
+                <ProductItem
+                    id={p.id}
+                    title={p.title}
+                    description={p.description}
+                    price={p.price}
+                    thumbnail={p.thumbnail}
+                />
+            )}
+        >
+        </FlatList>
+        :
+        <Text>Empty cart (in progres...)</Text>
     )
 }
 

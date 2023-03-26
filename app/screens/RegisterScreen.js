@@ -13,14 +13,14 @@ const RegisterScreen = () => {
     }
 
     const navigation = useNavigation();
-    const {user, register} = useContext(authContext)
+    const { register } = useContext(authContext)
 
     const createUser = async ({email, password}) => {
         try {
             await register(email, password)
             navigation.navigate('Shop')
         } catch (err) {
-            console.log(err)
+            Alert.alert(err)
         }
     }
     
@@ -63,7 +63,7 @@ const RegisterScreen = () => {
                             secureTextEntry={true}
                         />
                     </View>
-                    <Button onPress={handleSubmit}>Register</Button>
+                    <Button onPress={handleSubmit} >Register</Button>
                 </>
             )}
         </Formik>

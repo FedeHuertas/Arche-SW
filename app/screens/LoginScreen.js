@@ -21,7 +21,7 @@ const LoginScreen = () => {
             await login(email, password)
             navigation.navigate('Shop')
         } catch (err) {
-            Alert.alert.log(err.message)
+            Alert.alert(err.message)
         }
     }
     
