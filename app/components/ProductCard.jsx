@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
         marginTop: 5,
         padding: 15,
         paddingTop: 5,
-        backgroundColor: theme.colors.fourth,
         borderRadius: 5,
         borderWidth: 0.5,
         borderColor: theme.colors.primary

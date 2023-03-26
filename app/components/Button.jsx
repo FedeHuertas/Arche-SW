@@ -1,11 +1,11 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import theme from "../theme";
 
-const Button = ({children, ...props}) => {
+const Button = ({children, disabled, ...props}) => {
     return (
         <>
             <Pressable style={{alignItems: 'center'}} onPress={props.onPress}>
-                <View style={styles.button} >
+                <View style={[styles.button, disabled && styles.buttonDisabled]} >
                     <Text style={styles.text}>{children}</Text>
                 </View>
             </Pressable>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
-      },
+    }
 })
 
 export default Button

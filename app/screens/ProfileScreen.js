@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { authContext } from "../context/AuthContext";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Button from "../components/Button";
 
@@ -16,10 +16,10 @@ const ProfileScreen = () => {
     }
 
     return (
-        <>
-            <Text>user: {user.email}</Text>
+        <View style={{alignItems: 'center', marginTop: 50}}>
+            <Text style={{fontSize: 20}} >{user.email}</Text>
             <Button onPress={handleLogOut} >Logout</Button>
-        </>
+        </View>
     )
 }
 

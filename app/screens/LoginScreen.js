@@ -14,7 +14,7 @@ const LoginScreen = () => {
     }
 
     const navigation = useNavigation()
-    const {user, login} = useContext(authContext)
+    const { login } = useContext(authContext)
 
     const sigin = async ({email, password}) => {
         try {
@@ -74,7 +74,6 @@ const LoginScreen = () => {
                     </>
                 )}
             </Formik>
-            <Text>{user.email}</Text>
         </View>
     )
 }
