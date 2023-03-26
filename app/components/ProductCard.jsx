@@ -1,10 +1,19 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { Feather } from '@expo/vector-icons';
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import theme from "../theme";
+import Button from "./Button";
 
 const ProductItem = (props) => {
     return (
         <View key={props.id} style={styles.container}>
-            <Text style={styles.title} >{props.title}</Text>
+            <View style={styles.header}>
+                <Text style={styles.title} >{props.title}</Text>
+                <Pressable>
+                    <View style={styles.addToCart}>
+                        <Feather name="shopping-cart" color={theme.colors.primary} />
+                    </View>
+                </Pressable>
+            </View>
             <View style={{flexDirection: "row", paddingTop: 5}}>
                 <Image style={styles.image} source={{ uri: props.thumbnail}} />
                 <Text style={{flex: 1, paddingStart: 10}}>{props.description}</Text>
@@ -42,6 +51,22 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end', 
         fontSize: 18, 
         padding: 8
+    },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingEnd: 5,
+        paddingTop: 5
+    },
+    addToCart: {
+        width: 30,
+        height: 30,
+        borderRadius: 15,
+        borderWidth: 1,
+        borderColor: theme.colors.primary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'flex-end'
     }
 })
 
