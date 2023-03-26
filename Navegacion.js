@@ -23,8 +23,16 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
+            <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={{...styles.headerColors}}
+            />
+            <Stack.Screen
+                name="Register"
+                component={RegisterScreen}
+                options={{...styles.headerColors}}
+            />
         </Stack.Navigator>
     )
 }
@@ -48,7 +56,8 @@ function MyTabs() {
                 options={{
                     tabBarIcon:({color}) => (
                         <Feather name="shopping-bag" size={26} color={color} />
-                    )
+                    ),
+                    ...styles.headerColors
                 }}
             />
             <Tab.Screen
@@ -57,7 +66,8 @@ function MyTabs() {
                 options={{
                     tabBarIcon:({color}) => (
                         <Feather name="shopping-cart" size={26} color={color} />
-                    )
+                    ),
+                    ...styles.headerColors
                 }}
             />
             {user ?
@@ -67,7 +77,8 @@ function MyTabs() {
                 options={{
                     tabBarIcon:({color}) => (
                         <Feather name="user" size={26} color={color} />
-                    )
+                    ),
+                    ...styles.headerColors
                 }}
             /> :
             <Tab.Screen
@@ -95,5 +106,11 @@ export default function Navegacion() {
 const styles = StyleSheet.create({
     tabIcon: {
         color: theme.colors.primary
+    },
+    headerColors: {
+        headerStyle: {
+            backgroundColor: theme.colors.primary
+        },
+        headerTintColor: theme.colors.fourth
     }
 })

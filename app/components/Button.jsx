@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 32,
         borderRadius: 30,
-        backgroundColor: theme.colors.primary,
+        backgroundColor: theme.colors.third,
         width: 150,
         margin: 10
     },
@@ -30,6 +30,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+    },
+    disabled: {
+
     }
 })
 

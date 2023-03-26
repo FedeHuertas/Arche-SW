@@ -65,7 +65,7 @@ const LoginScreen = () => {
                                 secureTextEntry={true}
                             />
                         </View>
-                        <Button onPress={handleSubmit} >Log-in</Button>
+                        <Button disabled onPress={handleSubmit} >Log-in</Button>
                         <Pressable
                             onPress={()=>navigation.navigate('Register')}
                         >
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20
     },
     registerLink: {
-        color: theme.colors.primary,
+        color: theme.colors.third,
         textDecorationLine: 'underline',
         flexGrow: 1
     }

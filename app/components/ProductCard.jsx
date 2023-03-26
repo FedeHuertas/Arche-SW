@@ -9,7 +9,7 @@ const ProductItem = (props) => {
                 <Text style={styles.title} >{props.title}</Text>
                 <Pressable>
                     <View style={styles.addToCart}>
-                        <Feather name="shopping-cart" color={theme.colors.primary} />
+                        <Feather name="shopping-cart" color={theme.colors.third} />
                     </View>
                 </Pressable>
             </View>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     price: {
-        color: theme.colors.primary,
+        color: theme.colors.third,
         fontWeight: 'bold',
         fontSize: 20,
         alignSelf: 'flex-end', 
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         height: 30,
         borderRadius: 15,
         borderWidth: 1,
-        borderColor: theme.colors.primary,
+        borderColor: theme.colors.third,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'flex-end'
