@@ -1,7 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import theme from "../theme";
-import Button from "./Button";
 
 const ProductItem = (props) => {
     return (
