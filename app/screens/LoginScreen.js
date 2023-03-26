@@ -1,8 +1,10 @@
-import { View, TextInput, StyleSheet, Text, Pressable } from "react-native";
+import { useContext } from "react";
+import { View, TextInput, StyleSheet, Text, Pressable, Alert } from "react-native";
 import { Formik, useField } from "formik";
 import { loginValidationSchema } from "../validationSchemas/login";
 import Button from "../components/Button";
 import { useNavigation } from "@react-navigation/native";
+import { authContext } from "../context/AuthContext";
 import theme from "../theme";
 
 const LoginScreen = () => {
@@ -10,7 +12,18 @@ const LoginScreen = () => {
         email: '',
         password: ''
     }
+
     const navigation = useNavigation()
+    const {user, login} = useContext(authContext)
+
+    const sigin = async ({email, password}) => {
+        try {
+            await login(email, password)
+            navigation.navigate('Shop')
+        } catch (err) {
+            Alert.alert.log(err.message)
+        }
+    }
     
     const FormikTextField = ({ name, ...props}) => {
         const [field, meta, helpers] = useField(name)
@@ -33,7 +46,7 @@ const LoginScreen = () => {
             <Formik
                 initialValues={initialValues}
                 validationSchema={loginValidationSchema}
-                onSubmit={values => console.log(values)}
+                onSubmit={values => sigin(values)}
             >
                 {({handleChange, handleSubmit, values}) => (
                     <>
@@ -61,6 +74,7 @@ const LoginScreen = () => {
                     </>
                 )}
             </Formik>
+            <Text>{user.email}</Text>
         </View>
     )
 }

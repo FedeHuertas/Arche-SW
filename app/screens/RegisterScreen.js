@@ -1,15 +1,28 @@
-import { View, TextInput, StyleSheet, Text } from "react-native";
+import { useContext } from "react";
+import { View, TextInput, StyleSheet, Text, Alert } from "react-native";
 import { Formik, useField } from "formik";
 import { loginValidationSchema } from "../validationSchemas/login";
 import Button from "../components/Button";
 import { useNavigation } from "@react-navigation/native";
+import { authContext } from "../context/AuthContext";
 
 const RegisterScreen = () => {
     const initialValues = {
         email: '',
         password: ''
     }
-    const navigation = useNavigation()
+
+    const navigation = useNavigation();
+    const {user, register} = useContext(authContext)
+
+    const createUser = async ({email, password}) => {
+        try {
+            await register(email, password)
+            navigation.navigate('Shop')
+        } catch (err) {
+            console.log(err)
+        }
+    }
     
     const FormikTextField = ({ name, ...props}) => {
         const [field, meta, helpers] = useField(name)
@@ -31,7 +44,7 @@ const RegisterScreen = () => {
         <Formik
             initialValues={initialValues}
             validationSchema={loginValidationSchema}
-            onSubmit={values => console.log(values)}
+            onSubmit={values => createUser(values)}
         >
             {({handleChange, handleSubmit, values}) => (
                 <>
@@ -50,7 +63,7 @@ const RegisterScreen = () => {
                             secureTextEntry={true}
                         />
                     </View>
-                    <Button onPress={()=>navigation.navigate('Register')}>Register</Button>
+                    <Button onPress={handleSubmit}>Register</Button>
                 </>
             )}
         </Formik>

@@ -1,15 +1,21 @@
+import { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
+import theme from "./app/theme";
+
+
+import { authContext } from "./app/context/AuthContext";
 
 import { Feather } from '@expo/vector-icons';
 
 import HomeScreen from "./app/screens/HomeScreen";
 import LoginScreen from "./app/screens/LoginScreen";
-import theme from "./app/theme";
 import CartScreen from "./app/screens/CartScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
+import ProfileScreen from "./app/screens/ProfileScreen";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -24,6 +30,9 @@ function MyStack() {
 }
 
 function MyTabs() {
+
+    const {user} = useContext(authContext)
+
     return (
         <Tab.Navigator
             screenOptions={{
@@ -51,6 +60,16 @@ function MyTabs() {
                     )
                 }}
             />
+            {user ?
+            <Tab.Screen
+                name="Profile"
+                component={ProfileScreen}
+                options={{
+                    tabBarIcon:({color}) => (
+                        <Feather name="user" size={26} color={color} />
+                    )
+                }}
+            /> :
             <Tab.Screen
                 name="Access"
                 component={MyStack}
@@ -59,8 +78,8 @@ function MyTabs() {
                         <Feather name="log-in" size={26} color={color} />
                     ),
                     headerShown: false
-                }}
-            />
+            }}
+            />}
         </Tab.Navigator>
       );
 }
