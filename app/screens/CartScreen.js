@@ -1,5 +1,6 @@
-import { FlatList, Text } from "react-native";
+import { FlatList, Text, View} from "react-native";
 import ProductItem from "../components/ProductCard";
+import theme from "../theme";
 
 const CartScreen = () => {
 
@@ -21,7 +22,9 @@ const CartScreen = () => {
         >
         </FlatList>
         :
-        <Text>Empty cart (in progres...)</Text>
+        <View style={theme.center}>
+            <Text>Empty cart</Text>
+        </View>
     )
 }
 

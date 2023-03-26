@@ -5,6 +5,11 @@ const theme = {
         third: '#5D9C59',
         fourth: '#2C3333',
         inactive: '#999'
+    },
+    center: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexGrow: 1
     }
 }
 

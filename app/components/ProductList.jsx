@@ -24,10 +24,7 @@ const ProductsList = () => {
         >
         </FlatList>
         :
-        <View style={{
-            justifyContent: 'center',
-            flexGrow: 1
-        }}>
+        <View style={theme.center}>
             <ActivityIndicator 
                 size={'large'}
                 color={theme.colors.primary}
