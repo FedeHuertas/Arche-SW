@@ -1,9 +1,9 @@
 const theme = {
     colors: {
-        primary: '#2C3333',
-        secondary: '#2E4F4F',
-        third: '#0E8388',
-        fourth: '#EEEEEE',
+        primary: '#0E8388',
+        secondary: '#F6F1F1',
+        third: '#5D9C59',
+        fourth: '#2C3333',
         inactive: '#999'
     }
 }

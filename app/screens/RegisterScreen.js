@@ -20,7 +20,7 @@ const RegisterScreen = () => {
             await register(email, password)
             navigation.navigate('Shop')
         } catch (err) {
-            Alert.alert(err)
+            Alert.alert(err.message)
         }
     }
     

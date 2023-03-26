@@ -111,6 +111,6 @@ const styles = StyleSheet.create({
         headerStyle: {
             backgroundColor: theme.colors.primary
         },
-        headerTintColor: theme.colors.fourth
+        headerTintColor: theme.colors.secondary
     }
 })
