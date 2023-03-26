@@ -1,5 +1,6 @@
-import { FlatList } from "react-native";
+import { FlatList, ActivityIndicator, View, Text } from "react-native";
 import ProductItem from "./ProductCard";
+import theme from "../theme";
 
 import useProducts from "../hooks/useProducts";
 
@@ -8,6 +9,7 @@ const ProductsList = () => {
     const { products } = useProducts();
 
     return (
+        products.length ?
         <FlatList
             data={products}
             renderItem={({item: p}) => (
@@ -21,6 +23,16 @@ const ProductsList = () => {
             )}
         >
         </FlatList>
+        :
+        <View style={{
+            justifyContent: 'center',
+            flexGrow: 1
+        }}>
+            <ActivityIndicator 
+                size={'large'}
+                color={theme.colors.primary}
+            />
+        </View>
     )
 }
 
