@@ -1,10 +1,11 @@
 import { FlatList, Text, View} from "react-native";
 import ProductItem from "../components/ProductCard";
 import theme from "../theme";
+import { useCartContext } from "../context/CartContext";
 
 const CartScreen = () => {
 
-    const cart = []
+    const { cart } = useCartContext()
 
     return (
         cart.length ?
@@ -17,6 +18,7 @@ const CartScreen = () => {
                     description={p.description}
                     price={p.price}
                     thumbnail={p.thumbnail}
+                    inCart={true}
                 />
             )}
         >

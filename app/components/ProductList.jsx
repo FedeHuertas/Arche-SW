@@ -3,10 +3,13 @@ import ProductItem from "./ProductCard";
 import theme from "../theme";
 
 import useProducts from "../hooks/useProducts";
+import { useCartContext } from '../context/CartContext';
+
 
 const ProductsList = () => {
 
     const { products } = useProducts();
+    const { cart } = useCartContext();
 
     return (
         products.length ?
@@ -19,6 +22,7 @@ const ProductsList = () => {
                     description={p.description}
                     price={p.price}
                     thumbnail={p.thumbnail}
+                    inCart={cart.find(prod => p.id === prod.id)}
                 />
             )}
         >

@@ -1,15 +1,22 @@
 import { Feather } from '@expo/vector-icons';
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import theme from "../theme";
+import { useCartContext } from '../context/CartContext';
 
 const ProductItem = (props) => {
+    const { addProduct, removeProduct } = useCartContext();
+
     return (
         <View key={props.id} style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.title} >{props.title}</Text>
-                <Pressable>
+                <Pressable onPress={props.inCart ? () => removeProduct(props.id) : () => addProduct(props)}>
                     <View style={styles.addToCart}>
+                        {props.inCart ?
+                        <Feather name="x" color={theme.colors.primary} />
+                        :
                         <Feather name="shopping-cart" color={theme.colors.primary} />
+                        }
                     </View>
                 </Pressable>
             </View>
