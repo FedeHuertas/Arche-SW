@@ -1,7 +1,9 @@
-import { FlatList, Text, View} from "react-native";
+import { FlatList, Text, View, StyleSheet} from "react-native";
 import ProductItem from "../components/ProductCard";
 import theme from "../theme";
 import { useCartContext } from "../context/CartContext";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 const CartScreen = () => {
 
@@ -25,9 +27,19 @@ const CartScreen = () => {
         </FlatList>
         :
         <View style={theme.center}>
-            <Text>Empty cart</Text>
+            <MaterialCommunityIcons name="cart-remove" size={100} color={theme.colors.inactive} />
+            <Text style={styles.empty}>Empty cart</Text>
         </View>
     )
 }
 
 export default CartScreen
+
+const styles = StyleSheet.create({
+    empty: {
+        fontSize: 25,
+        color: theme.colors.inactive,
+        fontWeight: 'bold',
+        margin: 8
+    }
+})
