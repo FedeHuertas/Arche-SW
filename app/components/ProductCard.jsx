@@ -11,9 +11,9 @@ const ProductItem = (props) => {
             <View style={styles.header}>
                 <Text style={styles.title} >{props.title}</Text>
                 <Pressable onPress={props.inCart ? () => removeProduct(props.id) : () => addProduct(props)}>
-                    <View style={styles.addToCart}>
+                    <View style={[styles.addToCart, props.inCart && styles.removeProduct]}>
                         {props.inCart ?
-                        <Feather name="x" color={theme.colors.primary} />
+                        <Feather name="x" color={theme.colors.secondary} />
                         :
                         <Feather name="shopping-cart" color={theme.colors.primary} />
                         }
@@ -72,6 +72,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'flex-end'
+    },
+    removeProduct: {
+        backgroundColor: theme.colors.primary,
     }
 })
 
