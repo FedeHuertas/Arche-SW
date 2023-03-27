@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 5,
-        backgroundColor: '#DDDDD'
+        backgroundColor: theme.colors.secondary
     },
     price: {
         fontSize: 18,
