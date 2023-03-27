@@ -7,6 +7,7 @@ import theme from "./app/theme";
 
 
 import { authContext } from "./app/context/AuthContext";
+import { useCartContext } from "./app/context/CartContext";
 
 import { Feather } from '@expo/vector-icons';
 
@@ -40,6 +41,8 @@ function MyStack() {
 function MyTabs() {
 
     const {user} = useContext(authContext)
+    const { cart } = useCartContext()
+
 
     return (
         <Tab.Navigator
@@ -67,6 +70,7 @@ function MyTabs() {
                     tabBarIcon:({color}) => (
                         <Feather name="shopping-cart" size={26} color={color} />
                     ),
+                    tabBarBadge: cart.length,
                     ...styles.headerColors
                 }}
             />
