@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         borderRadius: 5,
         borderWidth: 0.5,
-        borderColor: theme.colors.primary
+        borderColor: theme.colors.primary,
+        backgroundColor: 'white'
     },
     title: {
         color: theme.colors.primary,

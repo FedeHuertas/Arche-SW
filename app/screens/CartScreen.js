@@ -2,7 +2,7 @@ import { FlatList, Text, View, StyleSheet, Pressable} from "react-native";
 import ProductItem from "../components/ProductCard";
 import theme from "../theme";
 import { useCartContext } from "../context/CartContext";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Button from "../components/Button";
 
 
@@ -13,12 +13,6 @@ const CartScreen = () => {
     return (
         cart.length ?
         <>
-            <Button 
-                color={theme.colors.danger}
-                onPress={clearCart}
-            >
-                <MaterialCommunityIcons name="cart-remove" size={20} color="white" />
-            </Button>
             <FlatList
                 data={cart}
                 renderItem={({item: p}) => (
@@ -34,8 +28,19 @@ const CartScreen = () => {
             >
             </FlatList>
             <View style={styles.footer}>
-                <Text style={styles.total}>Total: ${sum}</Text>
-                <Button>Buy now</Button>
+                <Button 
+                    color={theme.colors.danger}
+                    onPress={clearCart}
+                >
+                <MaterialCommunityIcons name="cart-remove" size={20} color="white" />
+                </Button>
+                <View style={theme.center}>
+                    <Text style={styles.total}>Total</Text>
+                    <Text style={styles.price}>${sum}</Text>
+                </View>
+                <Button>
+                    <MaterialIcons name="attach-money" size={20} color="white" />
+                </Button>
             </View>
         </>
         :
@@ -59,10 +64,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginHorizontal: 25
+        paddingHorizontal: 5,
+        backgroundColor: '#DDDDD'
     },
-    total: {
+    price: {
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        paddingEnd: 2
     }
 })
