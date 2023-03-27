@@ -8,14 +8,17 @@ import Button from "../components/Button";
 
 const CartScreen = () => {
 
-    const { cart, sum } = useCartContext()
+    const { cart, sum, clearCart} = useCartContext()
 
     return (
         cart.length ?
         <>
-{/*             <Pressable>
-                <MaterialCommunityIcons name="delete-circle-outline" size={24} color="black" />
-            </Pressable> */}
+            <Button 
+                color={theme.colors.danger}
+                onPress={clearCart}
+            >
+                <MaterialCommunityIcons name="cart-remove" size={20} color="white" />
+            </Button>
             <FlatList
                 data={cart}
                 renderItem={({item: p}) => (

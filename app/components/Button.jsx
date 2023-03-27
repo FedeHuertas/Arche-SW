@@ -5,7 +5,7 @@ const Button = ({children, disabled, ...props}) => {
     return (
         <>
             <Pressable style={{alignItems: 'center'}} onPress={props.onPress}>
-                <View style={[styles.button, disabled && styles.buttonDisabled]} >
+                <View style={[styles.button, disabled && styles.buttonDisabled, props.color && {backgroundColor: props.color}]} >
                     <Text style={styles.text}>{children}</Text>
                 </View>
             </Pressable>
@@ -18,10 +18,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 12,
-        paddingHorizontal: 32,
+        paddingHorizontal: 12,
         borderRadius: 30,
         backgroundColor: theme.colors.third,
-        width: 150,
         margin: 10
     },
     text: {

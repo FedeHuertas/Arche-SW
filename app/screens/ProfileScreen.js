@@ -3,6 +3,7 @@ import { authContext } from "../context/AuthContext";
 import { Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Button from "../components/Button";
+import theme from "../theme";
 
 const ProfileScreen = () => {
 
@@ -18,7 +19,7 @@ const ProfileScreen = () => {
     return (
         <View style={{alignItems: 'center', marginTop: 50}}>
             <Text style={{fontSize: 20}} >{user.email}</Text>
-            <Button onPress={handleLogOut} >Logout</Button>
+            <Button color={theme.colors.danger} onPress={handleLogOut} >Logout</Button>
         </View>
     )
 }
